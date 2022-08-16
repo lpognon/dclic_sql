@@ -40,6 +40,10 @@ class StoreStudentRequest extends FormRequest
                 'required',
                 'date_format:' . config('panel.date_format'),
             ],
+            'pob' => [
+                'string',
+                'nullable',
+            ],
             'phone' => [
                 'string',
                 'required',
