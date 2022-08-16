@@ -99,6 +99,8 @@ return [
             'updated_at_helper'   => ' ',
             'deleted_at'          => 'Deleted at',
             'deleted_at_helper'   => ' ',
+            'pob'                 => 'Place of Birth',
+            'pob_helper'          => ' ',
         ],
     ],
 ];
