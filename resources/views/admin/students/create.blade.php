@@ -60,6 +60,16 @@
                 <span class="help-block">{{ trans('cruds.student.fields.dob_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="pob">{{ trans('cruds.student.fields.pob') }}</label>
+                <input class="form-control {{ $errors->has('pob') ? 'is-invalid' : '' }}" type="text" name="pob" id="pob" value="{{ old('pob', '') }}">
+                @if($errors->has('pob'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('pob') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.pob_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="email">{{ trans('cruds.student.fields.email') }}</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}">
                 @if($errors->has('email'))
