@@ -13,11 +13,11 @@ class CreateStudentsTable extends Migration
             $table->string('code')->unique();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('gender');
-            $table->date('dob');
+            $table->string('gender')->nullable();
+            $table->date('dob')->nullable();
             $table->string('pob')->nullable();
             $table->string('email')->nullable();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('whatsapp')->nullable();
             $table->boolean('is_active')->default(0);
             $table->string('profession')->nullable();
