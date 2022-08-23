@@ -40,10 +40,6 @@ class UpdateStudentRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'pob' => [
-                'string',
-                'nullable',
-            ],
             'phone' => [
                 'string',
                 'nullable',

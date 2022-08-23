@@ -97,6 +97,38 @@
                 </a>
             </li>
         @endcan
+        @can('setting_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/cities*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.setting.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('city_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.cities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/cities") || request()->is("admin/cities/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.city.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('department_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.departments.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/departments") || request()->is("admin/departments/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.department.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">

@@ -47,6 +47,9 @@
                             {{ trans('cruds.student.fields.is_active') }}
                         </th>
                         <th>
+                            {{ trans('cruds.student.fields.pob') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -81,6 +84,9 @@
                             <td>
                                 <span style="display:none">{{ $student->is_active ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $student->is_active ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                {{ $student->pob->name ?? '' }}
                             </td>
                             <td>
                                 @can('student_show')
