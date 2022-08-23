@@ -40,8 +40,8 @@
                 <span class="help-block">{{ trans('cruds.student.fields.lastname_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="gender">{{ trans('cruds.student.fields.gender') }}</label>
-                <input class="form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" type="text" name="gender" id="gender" value="{{ old('gender', '') }}" required>
+                <label for="gender">{{ trans('cruds.student.fields.gender') }}</label>
+                <input class="form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" type="text" name="gender" id="gender" value="{{ old('gender', '') }}">
                 @if($errors->has('gender'))
                     <div class="invalid-feedback">
                         {{ $errors->first('gender') }}
@@ -50,8 +50,8 @@
                 <span class="help-block">{{ trans('cruds.student.fields.gender_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="dob">{{ trans('cruds.student.fields.dob') }}</label>
-                <input class="form-control date {{ $errors->has('dob') ? 'is-invalid' : '' }}" type="text" name="dob" id="dob" value="{{ old('dob') }}" required>
+                <label for="dob">{{ trans('cruds.student.fields.dob') }}</label>
+                <input class="form-control date {{ $errors->has('dob') ? 'is-invalid' : '' }}" type="text" name="dob" id="dob" value="{{ old('dob') }}">
                 @if($errors->has('dob'))
                     <div class="invalid-feedback">
                         {{ $errors->first('dob') }}
@@ -80,8 +80,8 @@
                 <span class="help-block">{{ trans('cruds.student.fields.email_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="phone">{{ trans('cruds.student.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', '') }}" required>
+                <label for="phone">{{ trans('cruds.student.fields.phone') }}</label>
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', '') }}">
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}

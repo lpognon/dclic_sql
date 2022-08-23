@@ -67,6 +67,36 @@
                 </a>
             </li>
         @endcan
+        @can('course_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.courses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/courses") || request()->is("admin/courses/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.course.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('teacher_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.teachers.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/teachers") || request()->is("admin/teachers/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.teacher.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('student_grade_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.student-grades.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/student-grades") || request()->is("admin/student-grades/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.studentGrade.title') }}
+                </a>
+            </li>
+        @endcan
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">

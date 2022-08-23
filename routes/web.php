@@ -30,6 +30,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('students/media', 'StudentsController@storeMedia')->name('students.storeMedia');
     Route::post('students/ckmedia', 'StudentsController@storeCKEditorImages')->name('students.storeCKEditorImages');
     Route::resource('students', 'StudentsController');
+
+    // Course
+    Route::delete('courses/destroy', 'CourseController@massDestroy')->name('courses.massDestroy');
+    Route::resource('courses', 'CourseController');
+
+    // Teacher
+    Route::delete('teachers/destroy', 'TeacherController@massDestroy')->name('teachers.massDestroy');
+    Route::resource('teachers', 'TeacherController');
+
+    // Student Grade
+    Route::delete('student-grades/destroy', 'StudentGradeController@massDestroy')->name('student-grades.massDestroy');
+    Route::resource('student-grades', 'StudentGradeController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
