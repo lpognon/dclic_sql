@@ -34,11 +34,11 @@ class UpdateStudentRequest extends FormRequest
                 'string',
                 'min:1',
                 'max:1',
-                'required',
+                'nullable',
             ],
             'dob' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'pob' => [
                 'string',
@@ -46,7 +46,7 @@ class UpdateStudentRequest extends FormRequest
             ],
             'phone' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'whatsapp' => [
                 'string',
