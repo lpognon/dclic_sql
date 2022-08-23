@@ -42,6 +42,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Student Grade
     Route::delete('student-grades/destroy', 'StudentGradeController@massDestroy')->name('student-grades.massDestroy');
     Route::resource('student-grades', 'StudentGradeController');
+
+    // City
+    Route::delete('cities/destroy', 'CityController@massDestroy')->name('cities.massDestroy');
+    Route::resource('cities', 'CityController');
+
+    // Department
+    Route::delete('departments/destroy', 'DepartmentController@massDestroy')->name('departments.massDestroy');
+    Route::resource('departments', 'DepartmentController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
