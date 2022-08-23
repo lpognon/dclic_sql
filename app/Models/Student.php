@@ -50,6 +50,11 @@ class Student extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function studentStudentGrades()
+    {
+        return $this->hasMany(StudentGrade::class, 'student_id', 'id');
+    }
+
     public function getDobAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;

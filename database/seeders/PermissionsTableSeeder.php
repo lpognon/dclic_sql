@@ -96,6 +96,66 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 22,
+                'title' => 'course_create',
+            ],
+            [
+                'id'    => 23,
+                'title' => 'course_edit',
+            ],
+            [
+                'id'    => 24,
+                'title' => 'course_show',
+            ],
+            [
+                'id'    => 25,
+                'title' => 'course_delete',
+            ],
+            [
+                'id'    => 26,
+                'title' => 'course_access',
+            ],
+            [
+                'id'    => 27,
+                'title' => 'teacher_create',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'teacher_edit',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'teacher_show',
+            ],
+            [
+                'id'    => 30,
+                'title' => 'teacher_delete',
+            ],
+            [
+                'id'    => 31,
+                'title' => 'teacher_access',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'student_grade_create',
+            ],
+            [
+                'id'    => 33,
+                'title' => 'student_grade_edit',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'student_grade_show',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'student_grade_delete',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'student_grade_access',
+            ],
+            [
+                'id'    => 37,
                 'title' => 'profile_password_edit',
             ],
         ];
