@@ -32,13 +32,13 @@ class Student extends Model implements HasMedia
         'lastname',
         'gender',
         'dob',
-        'pob',
         'email',
         'phone',
         'whatsapp',
         'is_active',
         'profession',
         'observations',
+        'pob_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -63,6 +63,11 @@ class Student extends Model implements HasMedia
     public function setDobAttribute($value)
     {
         $this->attributes['dob'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function pob()
+    {
+        return $this->belongsTo(City::class, 'pob_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

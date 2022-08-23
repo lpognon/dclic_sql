@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyStudentRequest;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\City;
 use App\Models\Student;
 use Gate;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class StudentsController extends Controller
     {
         abort_if(Gate::denies('student_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $students = Student::all();
+        $students = Student::with(['pob'])->get();
 
         return view('admin.students.index', compact('students'));
     }
@@ -30,7 +31,9 @@ class StudentsController extends Controller
     {
         abort_if(Gate::denies('student_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.students.create');
+        $pobs = City::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.students.create', compact('pobs'));
     }
 
     public function store(StoreStudentRequest $request)
@@ -48,7 +51,11 @@ class StudentsController extends Controller
     {
         abort_if(Gate::denies('student_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.students.edit', compact('student'));
+        $pobs = City::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $student->load('pob');
+
+        return view('admin.students.edit', compact('pobs', 'student'));
     }
 
     public function update(UpdateStudentRequest $request, Student $student)
@@ -62,7 +69,7 @@ class StudentsController extends Controller
     {
         abort_if(Gate::denies('student_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $student->load('studentStudentGrades');
+        $student->load('pob', 'studentStudentGrades');
 
         return view('admin.students.show', compact('student'));
     }

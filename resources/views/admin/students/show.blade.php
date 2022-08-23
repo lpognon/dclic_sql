@@ -65,14 +65,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.student.fields.pob') }}
-                        </th>
-                        <td>
-                            {{ $student->pob }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.student.fields.email') }}
                         </th>
                         <td>
@@ -117,6 +109,14 @@
                         </th>
                         <td>
                             {!! $student->observations !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.student.fields.pob') }}
+                        </th>
+                        <td>
+                            {{ $student->pob->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>
