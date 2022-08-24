@@ -17,21 +17,22 @@ class UpdateCourseRequest extends FormRequest
     public function rules()
     {
         return [
+            'code' => [
+                'string',
+                'required',
+                'unique:courses,code,' . request()->route('course')->id,
+            ],
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'start_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'end_date' => [
-                'string',
-                'required',
-            ],
-            'teacher_id' => [
-                'required',
-                'integer',
+                'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
         ];
     }

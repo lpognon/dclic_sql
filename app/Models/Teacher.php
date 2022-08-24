@@ -29,6 +29,11 @@ class Teacher extends Model
         'deleted_at',
     ];
 
+    public function teacherCourses()
+    {
+        return $this->hasMany(Course::class, 'teacher_id', 'id');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
