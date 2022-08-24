@@ -99,7 +99,7 @@ return [
             'updated_at_helper'   => ' ',
             'deleted_at'          => 'Deleted at',
             'deleted_at_helper'   => ' ',
-            'pob'                 => 'Place of Birth',
+            'pob'                 => 'Place of birth',
             'pob_helper'          => ' ',
         ],
     ],
@@ -123,6 +123,8 @@ return [
             'deleted_at_helper' => ' ',
             'teacher'           => 'Teacher',
             'teacher_helper'    => ' ',
+            'code'              => 'Code',
+            'code_helper'       => ' ',
         ],
     ],
     'teacher' => [

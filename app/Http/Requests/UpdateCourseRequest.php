@@ -17,6 +17,11 @@ class UpdateCourseRequest extends FormRequest
     public function rules()
     {
         return [
+            'code' => [
+                'string',
+                'required',
+                'unique:courses,code,' . request()->route('course')->id,
+            ],
             'name' => [
                 'string',
                 'nullable',

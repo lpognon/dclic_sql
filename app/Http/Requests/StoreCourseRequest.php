@@ -17,6 +17,11 @@ class StoreCourseRequest extends FormRequest
     public function rules()
     {
         return [
+            'code' => [
+                'string',
+                'required',
+                'unique:courses',
+            ],
             'name' => [
                 'string',
                 'nullable',
