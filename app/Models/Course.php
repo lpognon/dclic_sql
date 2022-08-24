@@ -23,6 +23,7 @@ class Course extends Model
     ];
 
     protected $fillable = [
+        'code',
         'name',
         'start_date',
         'end_date',
