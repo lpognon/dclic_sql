@@ -17,12 +17,14 @@ class Course extends Model
 
     protected $dates = [
         'start_date',
+        'end_date',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
     protected $fillable = [
+        'code',
         'name',
         'start_date',
         'end_date',
@@ -45,6 +47,16 @@ class Course extends Model
     public function setStartDateAttribute($value)
     {
         $this->attributes['start_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getEndDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setEndDateAttribute($value)
+    {
+        $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function teacher()

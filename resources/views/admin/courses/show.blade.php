@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.course.fields.code') }}
+                        </th>
+                        <td>
+                            {{ $course->code }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.course.fields.name') }}
                         </th>
                         <td>

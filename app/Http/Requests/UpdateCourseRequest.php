@@ -17,6 +17,11 @@ class UpdateCourseRequest extends FormRequest
     public function rules()
     {
         return [
+            'code' => [
+                'string',
+                'required',
+                'unique:courses,code,' . request()->route('course')->id,
+            ],
             'name' => [
                 'string',
                 'nullable',
@@ -26,8 +31,8 @@ class UpdateCourseRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
             ],
             'end_date' => [
-                'string',
                 'required',
+                'date_format:' . config('panel.date_format'),
             ],
             'teacher_id' => [
                 'required',
