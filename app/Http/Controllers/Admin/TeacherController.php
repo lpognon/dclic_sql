@@ -54,6 +54,8 @@ class TeacherController extends Controller
     {
         abort_if(Gate::denies('teacher_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $teacher->load('teacherCourses');
+
         return view('admin.teachers.show', compact('teacher'));
     }
 
