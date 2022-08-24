@@ -17,6 +17,11 @@ class StoreCourseRequest extends FormRequest
     public function rules()
     {
         return [
+            'code' => [
+                'string',
+                'required',
+                'unique:courses',
+            ],
             'name' => [
                 'string',
                 'nullable',
@@ -26,8 +31,8 @@ class StoreCourseRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
             ],
             'end_date' => [
-                'string',
                 'required',
+                'date_format:' . config('panel.date_format'),
             ],
             'teacher_id' => [
                 'required',

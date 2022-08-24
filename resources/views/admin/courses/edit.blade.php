@@ -11,6 +11,16 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label class="required" for="code">{{ trans('cruds.course.fields.code') }}</label>
+                <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $course->code) }}" required>
+                @if($errors->has('code'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('code') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.code_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="name">{{ trans('cruds.course.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $course->name) }}">
                 @if($errors->has('name'))
@@ -32,7 +42,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="end_date">{{ trans('cruds.course.fields.end_date') }}</label>
-                <input class="form-control {{ $errors->has('end_date') ? 'is-invalid' : '' }}" type="text" name="end_date" id="end_date" value="{{ old('end_date', $course->end_date) }}" required>
+                <input class="form-control date {{ $errors->has('end_date') ? 'is-invalid' : '' }}" type="text" name="end_date" id="end_date" value="{{ old('end_date', $course->end_date) }}" required>
                 @if($errors->has('end_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('end_date') }}

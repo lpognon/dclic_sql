@@ -1,44 +1,52 @@
-@extends('layouts.admin')
-@section('content')
-@can('course_create')
+@can('student_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.courses.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.course.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.students.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.student.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
+
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.course.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.student.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Course">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-pobStudents">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.id') }}
+                            {{ trans('cruds.student.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.code') }}
+                            {{ trans('cruds.student.fields.code') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.name') }}
+                            {{ trans('cruds.student.fields.firstname') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.start_date') }}
+                            {{ trans('cruds.student.fields.lastname') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.end_date') }}
+                            {{ trans('cruds.student.fields.gender') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.teacher') }}
+                            {{ trans('cruds.student.fields.phone') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.student.fields.whatsapp') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.student.fields.is_active') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.student.fields.pob') }}
                         </th>
                         <th>
                             &nbsp;
@@ -46,44 +54,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($courses as $key => $course)
-                        <tr data-entry-id="{{ $course->id }}">
+                    @foreach($students as $key => $student)
+                        <tr data-entry-id="{{ $student->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $course->id ?? '' }}
+                                {{ $student->id ?? '' }}
                             </td>
                             <td>
-                                {{ $course->code ?? '' }}
+                                {{ $student->code ?? '' }}
                             </td>
                             <td>
-                                {{ $course->name ?? '' }}
+                                {{ $student->firstname ?? '' }}
                             </td>
                             <td>
-                                {{ $course->start_date ?? '' }}
+                                {{ $student->lastname ?? '' }}
                             </td>
                             <td>
-                                {{ $course->end_date ?? '' }}
+                                {{ $student->gender ?? '' }}
                             </td>
                             <td>
-                                {{ $course->teacher->firstname ?? '' }}
+                                {{ $student->phone ?? '' }}
                             </td>
                             <td>
-                                @can('course_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.courses.show', $course->id) }}">
+                                {{ $student->whatsapp ?? '' }}
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $student->is_active ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $student->is_active ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                {{ $student->pob->name ?? '' }}
+                            </td>
+                            <td>
+                                @can('student_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.students.show', $student->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('course_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.courses.edit', $course->id) }}">
+                                @can('student_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.students.edit', $student->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('course_delete')
-                                    <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('student_delete')
+                                    <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -100,19 +118,16 @@
     </div>
 </div>
 
-
-
-@endsection
 @section('scripts')
 @parent
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('course_delete')
+@can('student_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.courses.massDestroy') }}",
+    url: "{{ route('admin.students.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -143,7 +158,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-Course:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-pobStudents:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
